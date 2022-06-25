@@ -1,0 +1,47 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb-base",
+    "prettier",
+    // "react-app",
+    // "react-app/jest",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["prettier", "react", "react-hooks", "@typescript-eslint"],
+  "rules": {
+    "guard-for-in": "warn",
+    "object-shorthand": "off",
+    "no-console": "warn",
+    "no-restricted-syntax": "warn",
+    "no-underscore-dangle": "warn",
+    "no-control-regex": "warn",
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
+    "no-use-before-define": "warn",
+    "no-param-reassign": "warn",
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "context" }],
+    "indent": ["warn", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/no-non-null-assertion": "off"
+  }
+}
