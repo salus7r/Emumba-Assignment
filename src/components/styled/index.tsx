@@ -1,3 +1,4 @@
+import { device } from "@utils/responsive";
 import styled, { css } from "styled-components";
 
 const shared = () => css`
@@ -70,6 +71,11 @@ export const EmumbaCard = styled.div<{ $height?: string; $width?: string }>`
 
 export const Flex = styled.div`
   display: flex;
+  flex-direction: column;
+
+  @media ${device.laptop} {
+    flex-direction: row;
+  }
 `;
 
 export const FlexEnd = styled(Flex)`
@@ -86,9 +92,21 @@ export const FlexCenterBetween = styled(FlexSpaceBetween)`
 
 export const FlexColumn = styled(Flex)<{ $width?: string }>`
   flex-direction: column;
-
-  width: ${({ $width }) => $width || "auto"};
   margin: 0 0.5rem;
+
+  /* width: ${({ $width }) => $width || "auto"}; */
+
+  @media ${device.mobileS} {
+    width: 90%;
+  }
+
+  @media ${device.tablet} {
+    width: 90%;
+  }
+
+  @media ${device.laptop} {
+    width: ${({ $width }) => $width || "auto"};
+  }
 `;
 
 export const FlexRow = styled(Flex)`

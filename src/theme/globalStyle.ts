@@ -6,23 +6,23 @@ const GlobalStyle = createGlobalStyle`
         font-size: 16px;
 
         @media ${device.mobileS} {
-            font-size: 12px;
-        }
-
-        @media ${device.tablet} {
-            font-size: 13px;
-        }
-
-        @media ${device.laptop} {
             font-size: 14px;
         }
 
+        @media ${device.tablet} {
+            font-size: 15px;
+        }
+
+        @media ${device.laptop} {
+            font-size: 16px;
+        }
+
         @media ${device.desktop} {
-            padding: 16px;
+            font-size: 18px;
         }
 
         @media ${device.desktopXL} {
-            padding: 20px;
+            font-size: 20px;
         }
     }
 

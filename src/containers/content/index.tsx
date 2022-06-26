@@ -22,11 +22,11 @@ const Content: FC = () => {
         <FlexRow>
           {selected ? (
             <>
-              <FlexColumn $width={"50%"}>
+              <FlexColumn $width={"60%"}>
                 <CurrentWeather />
                 <WeeklyWeather />
               </FlexColumn>
-              <FlexColumn $width={"50%"}>
+              <FlexColumn $width={"40%"}>
                 <TemperatureConverter />
               </FlexColumn>
             </>
