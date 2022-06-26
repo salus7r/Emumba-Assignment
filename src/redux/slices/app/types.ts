@@ -1,4 +1,4 @@
-import { Location } from "apis/types";
+import { Location, Weather } from "apis/types";
 
 export type AppReducerState = {
   locations: {
@@ -7,6 +7,11 @@ export type AppReducerState = {
     error: string;
     results: Location[];
     selected?: Location;
+  };
+  weather: {
+    loading: boolean;
+    error: string;
+    result?: Weather;
   };
 };
 

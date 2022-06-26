@@ -34,8 +34,8 @@ export const EmumbaInput = styled.input`
   ${sharedBorderRadius};
 
   width: 100%;
-  color: "black";
-  padding: 1.5rem 1.5rem;
+  color: black;
+  padding: 1.5rem;
 `;
 
 export const EmumbaSelect = styled.select<{ $primary?: true }>`
@@ -46,8 +46,9 @@ export const EmumbaSelect = styled.select<{ $primary?: true }>`
   color: ${({ $primary }) => ($primary ? "white" : "#172b4d")};
   background-color: ${({ $primary }) => ($primary ? "#2684FF" : "#edf3fd")};
 
-  padding: 0.625rem 1.25rem;
-  padding: 0.313rem 1rem 0.188rem;
+  cursor: pointer;
+  padding: 1.5rem;
+  width: 20rem;
 `;
 
 export const EmumbaCard = styled.div`
@@ -58,3 +59,21 @@ export const EmumbaCard = styled.div`
   box-shadow: 0 0.375rem 1rem #edf3fd;
   margin-top: 1.25rem;
 `;
+
+export const Flex = styled.div`
+  display: flex;
+`;
+
+export const FlexEnd = styled(Flex)`
+  align-items: flex-end;
+`;
+
+export const FlexSpaceBetween = styled(Flex)`
+  justify-content: space-between;
+`;
+
+export const FlexColumn = styled(Flex)<{ col?: number }>`
+  flex-direction: column;
+`;
+
+export const FlexRow = styled(Flex)``;

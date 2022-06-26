@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
-export const EmumbaLoadingWrapper = styled.div`
-  display: flex;
-  align-items: flex-end;
-`;
+import { FlexEnd } from "@components/styled";
+
+export const EmumbaLoadingWrapper = styled(FlexEnd)``;
 
 export const EmumbaLoader = styled.div`
   border: 0.25rem solid #f3f3f3; /* Light grey */

@@ -2,9 +2,9 @@ import React, { FC, useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { AppDispatch, RootState } from "redux/store";
-import { fetchLocations, forceOpen, resetLocations } from "redux/slices/app";
-import { useDebounce } from "hooks";
-import { EmumbaInput } from "@components/styled";
+import { fetchLocations, forceCloseDropdown, resetLocations } from "redux/slices/app";
+import { useDebounce, usePrevious } from "hooks";
+import { EmumbaInput, EmumbaSelect, Flex } from "@components/styled";
 import { Wrapper } from "./styled";
 import Options from "./Options";
 
@@ -14,35 +14,52 @@ const SearchBar: FC = () => {
   const { results, forceClose } = useSelector((state: RootState) => state.app.locations);
 
   const [query, setQuery] = useState("");
+  const [searchType, setSearchType] = useState<"name" | "zip">("name");
 
+  const prevSearchType = usePrevious(searchType);
   const debouncedQuery = useDebounce(query, 250);
 
   useEffect(() => {
-    if (debouncedQuery) {
-      dispatch(fetchLocations(debouncedQuery));
+    if (debouncedQuery && prevSearchType === searchType) {
+      dispatch(fetchLocations({ search: debouncedQuery, type: searchType }));
     }
 
     return () => {
       resetLocations();
     };
-  }, [debouncedQuery, dispatch]);
+  }, [debouncedQuery, searchType, dispatch, prevSearchType]);
 
   const forceOpenOptions = useCallback(() => {
     if (forceClose && results.length > 0) {
-      dispatch(forceOpen());
+      dispatch(forceCloseDropdown(false));
     }
   }, [dispatch, forceClose, results.length]);
 
   return (
     <Wrapper>
-      <EmumbaInput
-        autoFocus
-        name="search"
-        type="search"
-        placeholder="Search Location..."
-        onChange={(e) => setQuery(e.target.value)}
-        onFocus={forceOpenOptions}
-      />
+      <Flex>
+        <EmumbaInput
+          autoFocus
+          name="search"
+          type="search"
+          value={query}
+          placeholder={`Search by ${searchType}...`}
+          onChange={(e) => setQuery(e.target.value)}
+          onFocus={forceOpenOptions}
+        />
+        <EmumbaSelect
+          placeholder={"Select Type"}
+          value={searchType}
+          onChange={(e) => {
+            setQuery("");
+            dispatch(forceCloseDropdown(true));
+            setSearchType(e.target.value as "name" | "zip");
+          }}
+        >
+          <option value={"name"}>by Name</option>
+          <option value={"zip"}>by Zip</option>
+        </EmumbaSelect>
+      </Flex>
       <Options />
     </Wrapper>
   );

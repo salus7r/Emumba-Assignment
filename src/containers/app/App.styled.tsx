@@ -25,6 +25,7 @@ export const AppBodyLayout = styled.div`
   border-bottom-right-radius: 2rem;
   border-bottom-left-radius: 2rem;
   background-color: #f8fbff;
+  min-height: 65vh;
 `;
 
 export const AppSearchBarWrapper = styled.div`

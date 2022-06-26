@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { searchLocation } from "apis";
+import { searchLocation, getWeatherData } from "apis";
 import { AppReducerState, SelectLocationPayload } from "./types";
 
 const initialState: AppReducerState = {
@@ -11,13 +11,42 @@ const initialState: AppReducerState = {
     results: [],
     selected: undefined,
   },
+  weather: {
+    loading: false,
+    error: "",
+    result: undefined,
+  },
 };
 
-export const fetchLocations = createAsyncThunk("geo/locations", async (search: string) => {
-  const response = await searchLocation(search, 5);
+export const fetchLocations = createAsyncThunk(
+  "geo/locations",
+  async (args: { search: string; type: "name" | "zip" }, { rejectWithValue }) => {
+    try {
+      const { search, type } = args;
 
-  return response;
-});
+      const response = await searchLocation(search, type, 5);
+
+      return response;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  },
+);
+
+export const fetchWeatherData = createAsyncThunk(
+  "weather/data",
+  async (args: { lat: number; lon: number }, { rejectWithValue }) => {
+    try {
+      const { lat, lon } = args;
+
+      const response = await getWeatherData(lat, lon);
+
+      return response;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  },
+);
 
 const appSlice = createSlice({
   name: "app",
@@ -30,8 +59,8 @@ const appSlice = createSlice({
       state.locations.selected = location;
       state.locations.forceClose = true;
     },
-    forceOpen: (state: AppReducerState) => {
-      state.locations.forceClose = false;
+    forceCloseDropdown: (state: AppReducerState, { payload }: PayloadAction<boolean>) => {
+      state.locations.forceClose = payload;
     },
     resetLocations: (state: AppReducerState) => {
       state.locations = {
@@ -40,6 +69,13 @@ const appSlice = createSlice({
         error: "",
         results: [],
         selected: undefined,
+      };
+    },
+    resetWeather: (state: AppReducerState) => {
+      state.weather = {
+        loading: false,
+        error: "",
+        result: undefined,
       };
     },
   },
@@ -54,14 +90,28 @@ const appSlice = createSlice({
       state.locations.loading = true;
       state.locations.forceClose = false;
     });
-    builder.addCase(fetchLocations.rejected, (state) => {
+    builder.addCase(fetchLocations.rejected, (state, action) => {
       state.locations.loading = false;
-      state.locations.error = "Something went wrong, please try again.";
+      state.locations.error = action.error.message || "Something went wrong, please try again.";
       state.locations.results = [];
+    });
+    builder.addCase(fetchWeatherData.fulfilled, (state, { payload }) => {
+      state.weather.loading = false;
+      state.weather.error = "";
+      state.weather.result = payload;
+    });
+    builder.addCase(fetchWeatherData.pending, (state) => {
+      state.weather.loading = true;
+    });
+    builder.addCase(fetchWeatherData.rejected, (state, action) => {
+      state.weather.loading = false;
+      state.weather.error = action.error.message || "Something went wrong, please try again.";
+      state.weather.result = undefined;
     });
   },
 });
 
-export const { selectLocation, forceOpen, resetLocations } = appSlice.actions;
+export const { selectLocation, forceCloseDropdown, resetLocations, resetWeather } =
+  appSlice.actions;
 
 export default appSlice.reducer;

@@ -18,8 +18,8 @@ export const SearchOptionsWrapper = styled.div`
   right: 0;
 `;
 
-export const Option = styled.div`
-  cursor: pointer;
+export const Option = styled.div<{ $disabled?: boolean }>`
+  cursor: ${({ $disabled }) => ($disabled ? "not-allowed" : "pointer")};
   font-size: 1.125rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
@@ -30,6 +30,6 @@ export const Option = styled.div`
   }
 
   &:hover {
-    background-color: #edf3fd;
+    background-color: ${({ $disabled }) => ($disabled ? "white" : "#edf3fd")};
   }
 `;

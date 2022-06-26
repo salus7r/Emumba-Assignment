@@ -2,7 +2,7 @@ import React, { FC, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { RootState, AppDispatch } from "redux/store";
-import { selectLocation } from "redux/slices/app";
+import { fetchWeatherData, selectLocation } from "redux/slices/app";
 import { Location } from "apis/types";
 import { Option, SearchOptionsWrapper } from "./styled";
 import { Loader } from "..";
@@ -17,6 +17,7 @@ const Options: FC = () => {
   const locationSelect = useCallback(
     (location: Location) => {
       dispatch(selectLocation({ location: location }));
+      dispatch(fetchWeatherData({ lat: location.lat, lon: location.lon }));
     },
     [dispatch],
   );
@@ -27,10 +28,15 @@ const Options: FC = () => {
       {!loading &&
         results.map((option, index) => (
           <Option
+            $disabled={!!option.message}
             key={`${option.lat}_${option.lon}_${index}`}
-            onClick={() => locationSelect(option)}
+            onClick={() => !option.message && locationSelect(option)}
           >
-            {option.name}, {option.country} ({option.lat}, ${option.lon})
+            {option.message || (
+              <>
+                {option.name}, {option.country} ({option.lat}, ${option.lon})
+              </>
+            )}
           </Option>
         ))}
       {error && <h4>{error}</h4>}
