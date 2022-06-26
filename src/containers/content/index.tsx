@@ -4,10 +4,13 @@ import { useSelector } from "react-redux";
 import { RootState } from "redux/store";
 
 import { FlexRow, FlexColumn, EmumbaCard } from "@components/styled";
-import { CurrentWeather, Loader } from "@components/index";
+import { CurrentWeather, TemperatureConverter, Loader } from "@components/index";
 
 const Content: FC = () => {
-  const { loading } = useSelector((state: RootState) => state.app.weather);
+  const { locations, weather } = useSelector((state: RootState) => state.app);
+
+  const { selected } = locations;
+  const { loading } = weather;
 
   return (
     <>
@@ -17,12 +20,18 @@ const Content: FC = () => {
         </EmumbaCard>
       ) : (
         <FlexRow>
-          <FlexColumn $width={"50%"}>
-            <CurrentWeather />
-          </FlexColumn>
-          <FlexColumn $width={"50%"}>
-            <CurrentWeather />
-          </FlexColumn>
+          {selected ? (
+            <>
+              <FlexColumn $width={"50%"}>
+                <CurrentWeather />
+              </FlexColumn>
+              <FlexColumn $width={"50%"}>
+                <TemperatureConverter />
+              </FlexColumn>
+            </>
+          ) : (
+            <></>
+          )}
         </FlexRow>
       )}
     </>

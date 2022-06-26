@@ -43,7 +43,9 @@ const SearchBar: FC = () => {
           name="search"
           type="search"
           value={query}
-          placeholder={`Search by ${searchType}...`}
+          placeholder={`Search by ${searchType} (i.e. ${
+            searchType === "name" ? "London" : "90210"
+          }...)`}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={forceOpenOptions}
         />

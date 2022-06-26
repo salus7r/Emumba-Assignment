@@ -36,6 +36,11 @@ export const EmumbaInput = styled.input`
   width: 100%;
   color: black;
   padding: 1.5rem;
+
+  &:disabled {
+    background: #dddddd;
+    cursor: not-allowed;
+  }
 `;
 
 export const EmumbaSelect = styled.select<{ $primary?: true }>`
@@ -59,7 +64,7 @@ export const EmumbaCard = styled.div<{ $height?: string; $width?: string }>`
   border: none;
   background: #ffffff;
   box-shadow: 0 0.375rem 1rem #edf3fd;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.5rem;
   padding: 1rem;
 `;
 
@@ -73,6 +78,10 @@ export const FlexEnd = styled(Flex)`
 
 export const FlexSpaceBetween = styled(Flex)`
   justify-content: space-between;
+`;
+
+export const FlexCenterBetween = styled(FlexSpaceBetween)`
+  align-items: center;
 `;
 
 export const FlexColumn = styled(Flex)<{ $width?: string }>`
