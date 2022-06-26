@@ -1,15 +1,32 @@
 import React, { FC } from "react";
-import { FlexRow, FlexColumn } from "@components/styled";
+import { useSelector } from "react-redux";
 
-const Content: FC = () => (
-  <FlexRow>
-    <FlexColumn>
-      <div>
-        <div>Today’s Forecast for </div>
-      </div>
-    </FlexColumn>
-    <FlexColumn></FlexColumn>
-  </FlexRow>
-);
+import { RootState } from "redux/store";
+
+import { FlexRow, FlexColumn, EmumbaCard } from "@components/styled";
+import { CurrentWeather, Loader } from "@components/index";
+
+const Content: FC = () => {
+  const { loading } = useSelector((state: RootState) => state.app.weather);
+
+  return (
+    <>
+      {loading ? (
+        <EmumbaCard $height={"50vh"} $width={"auto"}>
+          <Loader loading />
+        </EmumbaCard>
+      ) : (
+        <FlexRow>
+          <FlexColumn $width={"50%"}>
+            <CurrentWeather />
+          </FlexColumn>
+          <FlexColumn $width={"50%"}>
+            <CurrentWeather />
+          </FlexColumn>
+        </FlexRow>
+      )}
+    </>
+  );
+};
 
 export default Content;

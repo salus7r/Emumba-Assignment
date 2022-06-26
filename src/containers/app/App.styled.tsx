@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { device } from "@utils/responsive";
 
 export const AppContainer = styled.div`
   padding: 2rem;
@@ -36,17 +35,6 @@ export const AppSearchBarWrapper = styled.div`
 `;
 
 export const AppContentWrapper = styled.div`
-  padding: 0 1.875rem 1.875rem;
-
-  @media ${device.tablet} {
-    padding: 0 2.5rem 1.875rem !important;
-  }
-
-  @media ${device.desktop} {
-    padding: 0 3.75rem 1.875rem !important;
-  }
-
-  @media ${device.desktopXL} {
-    padding: 0 6.25rem 1.875rem !important;
-  }
+  font-size: 1.25rem;
+  padding: 1rem 1.5rem;
 `;

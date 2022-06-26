@@ -34,8 +34,9 @@
     "import/no-unresolved": "off",
     "import/extensions": "off",
     "no-use-before-define": "warn",
-    "no-unused-vars": ["warn", { "argsIgnorePattern": "context" }],
+    // "no-param-reassign": "warn", // TODO: overridden
     "no-param-reassign": ["error", { "props": false }],
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "context" }],
     "indent": ["warn", 2],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "double"],

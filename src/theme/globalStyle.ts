@@ -69,6 +69,14 @@ const GlobalStyle = createGlobalStyle`
         margin-bottom: 0 !important;
     }
 
+    .mb-8 {
+        margin-bottom: 0.5rem !important;
+    }
+
+    .mb-12 {
+        margin-bottom: 0.75rem !important;
+    }
+
     .ml-0 {
         margin-left: 0 !important;
     } 

@@ -51,13 +51,16 @@ export const EmumbaSelect = styled.select<{ $primary?: true }>`
   width: 20rem;
 `;
 
-export const EmumbaCard = styled.div`
+export const EmumbaCard = styled.div<{ $height?: string; $width?: string }>`
   ${sharedBorderRadius}
 
+  /* width: ${({ $width }) => $width || "auto"}; */
+  height: ${({ $height }) => $height || "auto"};
   border: none;
   background: #ffffff;
   box-shadow: 0 0.375rem 1rem #edf3fd;
-  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  padding: 1rem;
 `;
 
 export const Flex = styled.div`
@@ -72,8 +75,15 @@ export const FlexSpaceBetween = styled(Flex)`
   justify-content: space-between;
 `;
 
-export const FlexColumn = styled(Flex)<{ col?: number }>`
+export const FlexColumn = styled(Flex)<{ $width?: string }>`
   flex-direction: column;
+
+  width: ${({ $width }) => $width || "auto"};
+  margin: 0 0.5rem;
 `;
 
-export const FlexRow = styled(Flex)``;
+export const FlexRow = styled(Flex)`
+  width: 100%;
+  /* margin: 0 -0.5rem; */
+  justify-content: space-between;
+`;

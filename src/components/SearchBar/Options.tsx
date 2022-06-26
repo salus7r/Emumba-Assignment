@@ -34,7 +34,10 @@ const Options: FC = () => {
           >
             {option.message || (
               <>
-                {option.name}, {option.country} ({option.lat}, ${option.lon})
+                <b>
+                  {`${option.name}${option.state ? `, ${option.state}` : ""}, ${option.country} `}
+                </b>
+                ({option.lat}, {option.lon})
               </>
             )}
           </Option>
