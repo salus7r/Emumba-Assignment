@@ -1,7 +1,15 @@
+import { Location } from "apis/types";
+
 export type AppReducerState = {
-  showSideBar: boolean;
+  locations: {
+    loading: boolean;
+    forceClose: boolean;
+    error: string;
+    results: Location[];
+    selected?: Location;
+  };
 };
 
-export type ShowSideBarPayload = {
-  showSideBar: boolean;
+export type SelectLocationPayload = {
+  location: Location;
 };

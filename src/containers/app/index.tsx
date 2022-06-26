@@ -2,17 +2,17 @@ import React, { FC } from "react";
 import { Provider } from "react-redux";
 
 import store from "redux/store";
-import Header from "@components/header";
 import Content from "@containers/content";
+import { SearchBar } from "@components/index";
 
 import GlobalStyle from "@theme/globalStyle";
 
 import {
   AppContainer,
   AppMainLayout,
-  AppSiderWrapper,
+  AppHeading,
   AppBodyLayout,
-  AppHeaderWrapper,
+  AppSearchBarWrapper,
   AppContentWrapper,
 } from "./App.styled";
 
@@ -21,11 +21,11 @@ const App: FC = () => (
     <GlobalStyle />
     <AppContainer className="App">
       <AppMainLayout>
-        <AppSiderWrapper>{/* <SideMenu /> */}</AppSiderWrapper>
+        <AppHeading>The Weather App</AppHeading>
         <AppBodyLayout>
-          <AppHeaderWrapper>
-            <Header />
-          </AppHeaderWrapper>
+          <AppSearchBarWrapper>
+            <SearchBar />
+          </AppSearchBarWrapper>
           <AppContentWrapper>
             <Content />
           </AppContentWrapper>

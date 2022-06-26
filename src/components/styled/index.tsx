@@ -1,4 +1,3 @@
-import { device } from "@utils/responsive";
 import styled, { css } from "styled-components";
 
 const shared = () => css`
@@ -8,14 +7,14 @@ const shared = () => css`
 `;
 
 const sharedBorderRadius = () => css`
-  border-radius: 12px;
+  border-radius: 0.75rem;
 `;
 
 const sharedDarkAndBoldText = () => css`
   color: #172b4d;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 1rem;
+  line-height: 1.375rem;
 `;
 
 export const EmumbaButton = styled.button<{ $primary?: true }>`
@@ -27,26 +26,16 @@ export const EmumbaButton = styled.button<{ $primary?: true }>`
   background-color: ${({ $primary }) => ($primary ? "#2684FF" : "#edf3fd")};
 
   height: auto;
-  padding: 15px 20px;
+  padding: 1rem 1.25rem;
 `;
 
 export const EmumbaInput = styled.input`
   ${shared};
   ${sharedBorderRadius};
 
-  padding: 10px 20px;
-
-  @media ${device.tablet} {
-    padding: 10px 20px;
-  }
-
-  @media ${device.desktop} {
-    padding: 15px 30px;
-  }
-
-  @media ${device.desktopXL} {
-    padding: 20px 40px;
-  }
+  width: 100%;
+  color: "black";
+  padding: 1.5rem 1.5rem;
 `;
 
 export const EmumbaSelect = styled.select<{ $primary?: true }>`
@@ -57,24 +46,8 @@ export const EmumbaSelect = styled.select<{ $primary?: true }>`
   color: ${({ $primary }) => ($primary ? "white" : "#172b4d")};
   background-color: ${({ $primary }) => ($primary ? "#2684FF" : "#edf3fd")};
 
-  padding: 10px 20px;
-  padding: 5px 15px 3px;
-
-  @media ${device.tablet} {
-    padding: 5px 15px 3px;
-  }
-
-  @media ${device.desktop} {
-    padding: 10px 25px 5px;
-  }
-
-  @media ${device.desktopXL} {
-    padding: 15px 35px 10px;
-  }
-`;
-
-export const EmumbaLanguageSelect = styled(EmumbaSelect)`
-  border-radius: 50px;
+  padding: 0.625rem 1.25rem;
+  padding: 0.313rem 1rem 0.188rem;
 `;
 
 export const EmumbaCard = styled.div`
@@ -82,6 +55,6 @@ export const EmumbaCard = styled.div`
 
   border: none;
   background: #ffffff;
-  box-shadow: 0px 6px 16px #edf3fd;
-  margin-top: 20px;
+  box-shadow: 0 0.375rem 1rem #edf3fd;
+  margin-top: 1.25rem;
 `;

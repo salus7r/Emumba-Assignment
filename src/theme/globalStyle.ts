@@ -1,6 +1,31 @@
 import { createGlobalStyle } from "styled-components";
+import { device } from "@utils/responsive";
 
 const GlobalStyle = createGlobalStyle`
+    html {
+        font-size: 16px;
+
+        @media ${device.mobileS} {
+            font-size: 12px;
+        }
+
+        @media ${device.tablet} {
+            font-size: 13px;
+        }
+
+        @media ${device.laptop} {
+            font-size: 14px;
+        }
+
+        @media ${device.desktop} {
+            padding: 16px;
+        }
+
+        @media ${device.desktopXL} {
+            padding: 20px;
+        }
+    }
+
     body {
         font-family: "Inter";
         background-color: #e5e5e5;

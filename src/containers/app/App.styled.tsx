@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { device } from "@utils/responsive";
 
 export const AppContainer = styled.div`
-  padding: 25px;
+  padding: 2rem;
 `;
 
 export const AppMainLayout = styled.div`
@@ -10,62 +10,42 @@ export const AppMainLayout = styled.div`
   background: transparent;
 `;
 
+export const AppHeading = styled.div`
+  border-top-right-radius: 2rem;
+  border-top-left-radius: 2rem;
+  background-color: #4c9aff;
+  padding: 3rem 1rem;
+
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+`;
+
 export const AppBodyLayout = styled.div`
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
+  border-bottom-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
   background-color: #f8fbff;
 `;
 
-export const AppSiderWrapper = styled.div`
-  border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px;
-  background-color: #4c9aff;
-  padding: 64px 14px;
-
-  @media ${device.desktop} {
-    min-width: 250px !important;
-  }
-
-  @media ${device.desktopL} {
-    min-width: 300px !important;
-  }
-
-  @media ${device.desktopXL} {
-    min-width: 384px !important;
-  }
-`;
-
-export const AppHeaderWrapper = styled.div`
+export const AppSearchBarWrapper = styled.div`
   background: transparent;
   height: initial;
   line-height: initial;
-  padding: 20px 30px;
-
-  @media ${device.tablet} {
-    padding: 30px 40px !important;
-  }
-
-  @media ${device.desktop} {
-    padding: 40px 60px !important;
-  }
-
-  @media ${device.desktopXL} {
-    padding: 70px 100px !important;
-  }
+  padding: 1rem 2rem;
 `;
 
 export const AppContentWrapper = styled.div`
-  padding: 0 30px 30px;
+  padding: 0 1.875rem 1.875rem;
 
   @media ${device.tablet} {
-    padding: 0 40px 30px !important;
+    padding: 0 2.5rem 1.875rem !important;
   }
 
   @media ${device.desktop} {
-    padding: 0 60px 30px !important;
+    padding: 0 3.75rem 1.875rem !important;
   }
 
   @media ${device.desktopXL} {
-    padding: 0 100px 30px !important;
+    padding: 0 6.25rem 1.875rem !important;
   }
 `;
