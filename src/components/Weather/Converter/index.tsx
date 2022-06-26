@@ -39,15 +39,15 @@ const TemperatureConverter: FC = () => {
           }}
         />
       </FlexCenterBetween>
-      <a
-        href={"#"}
+      <div
+        className={"clickable"}
         onClick={() => {
           setIsCtoF(!isCtoF);
         }}
         style={{ width: "100%", marginTop: "1rem", textAlign: "center" }}
       >
         --- Switch ---
-      </a>
+      </div>
     </Wrapper>
   );
 };

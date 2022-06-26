@@ -24,34 +24,35 @@ const CurrentWeather: FC = () => {
           <div>
             <p>
               <b>Current Temperature: </b>
-              {WeatherData?.main?.temp}
+              {WeatherData?.current?.temp}
             </p>
             <p>
               <b>Weather Condition: </b>
-              {WeatherData?.weather?.[0]?.main}, {WeatherData?.weather?.[0]?.description}
+              {WeatherData?.current?.weather?.[0]?.main},{" "}
+              {WeatherData?.current?.weather?.[0]?.description}
             </p>
             <p>
               <b>High / Low Temperature: </b>
-              {WeatherData?.main?.temp_max} / {WeatherData?.main?.temp_min}
+              {WeatherData?.current?.feels_like} / {WeatherData?.current?.dew_point}
             </p>
             {showMore && (
               <>
                 <p>
                   <b>Wind Speed: </b>
-                  {WeatherData?.wind?.speed}
+                  {WeatherData?.current?.wind_speed}
                 </p>
                 <p>
                   <b>Humidity: </b>
-                  {WeatherData?.main?.humidity}
+                  {WeatherData?.current?.humidity}
                 </p>
                 <p>
                   <b>Pressure: </b>
-                  {WeatherData?.main?.pressure}
+                  {WeatherData?.current?.pressure}
                 </p>
                 <p>
                   <b>Sunrise/Sunset Time: </b>
-                  {new Date(WeatherData?.sys?.sunrise || "").toLocaleTimeString()} /{" "}
-                  {new Date(WeatherData?.sys?.sunset || "").toLocaleTimeString()}
+                  {new Date(WeatherData?.current?.sunrise || "").toLocaleTimeString()} /{" "}
+                  {new Date(WeatherData?.current?.sunset || "").toLocaleTimeString()}
                 </p>
               </>
             )}
@@ -59,13 +60,13 @@ const CurrentWeather: FC = () => {
           <div>
             <img
               width={"125px"}
-              src={`https://openweathermap.org/img/wn/${WeatherData?.weather?.[0]?.icon}@2x.png`}
+              src={`https://openweathermap.org/img/wn/${WeatherData?.current?.weather?.[0]?.icon}@2x.png`}
             />
           </div>
         </FlexSpaceBetween>
-        <a href={"#"} onClick={() => setShowMore(!showMore)}>{`Show ${
+        <span className={"clickable"} onClick={() => setShowMore(!showMore)}>{`Show ${
           showMore ? "Less" : "More"
-        }...`}</a>
+        }...`}</span>
       </CurrentContent>
     </Wrapper>
   );

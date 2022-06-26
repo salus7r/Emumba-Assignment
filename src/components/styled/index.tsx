@@ -59,7 +59,7 @@ export const EmumbaSelect = styled.select<{ $primary?: true }>`
 export const EmumbaCard = styled.div<{ $height?: string; $width?: string }>`
   ${sharedBorderRadius}
 
-  /* width: ${({ $width }) => $width || "auto"}; */
+  width: ${({ $width }) => $width || "auto"};
   height: ${({ $height }) => $height || "auto"};
   border: none;
   background: #ffffff;
@@ -95,4 +95,11 @@ export const FlexRow = styled(Flex)`
   width: 100%;
   /* margin: 0 -0.5rem; */
   justify-content: space-between;
+`;
+
+export const OverFlowSlide = styled.div`
+  width: 100%;
+  overflow-x: scroll;
+  display: -webkit-box;
+  padding-bottom: 1rem;
 `;

@@ -36,6 +36,15 @@ const GlobalStyle = createGlobalStyle`
     code {
         font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
     }   
+
+    .clickable {
+        color: #2684FF;
+        
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
     
     .float-right {
         float: right !important;

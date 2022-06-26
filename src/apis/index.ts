@@ -36,7 +36,7 @@ export function searchLocation(
 // API get weather data function
 export function getWeatherData(lat: number, lon: number): Promise<Weather> {
   return fetch(
-    `${process.env.REACT_APP_WEATHER_API}?appid=${process.env.REACT_APP_WEATHER_API_KEY}&lat=${lat}&lon=${lon}`,
+    `${process.env.REACT_APP_WEATHER_API}?appid=${process.env.REACT_APP_WEATHER_API_KEY}&lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly,alerts`,
     {
       method: "GET",
     },
